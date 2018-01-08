@@ -37,6 +37,7 @@ app.use("/popper", express.static(__dirname + "/node_modules/popper.js/dist/"));
 
 // Routes initial Initialization
 const home_page = require('./routes/home'); // Index-Page
+const adminUser = require('./routes/admin/user'); 
 
 // Port Number to Start 
 const port = 2200;
@@ -58,7 +59,13 @@ app.set('views',path.join(__dirname,'views'));
 app.engine(".hbs", exphbs({ defaultLayout: "mainlayout", extname: ".hbs"}));
 app.set("view engine", ".hbs");
 
+app.use((req, res, next) => {
+    res.locals.login = req.isAuthenticated();
+    next();
+})
+
 // Index Page Route
+app.use('/admin',adminUser); 
 app.use('/',home_page); 
 
 // Server starting

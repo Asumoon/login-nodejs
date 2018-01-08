@@ -11,22 +11,28 @@
           <li class="nav-item">
             <a class="nav-link" href="/"><b>Home</b> </a>
           </li>
+           {{# if login}}
           <li class="nav-item">
-            <a class="nav-link" href="/test-page"><b>Pages</b> </a>
+            <a class="nav-link" href="/admin/test-page"><b>Pages</b> </a>
           </li>
+          {{/if}}
         </ul>
         
           <div class="pull-right">
-              <ul class="navbar-nav mr-auto">
-                  <li class="nav-item">
-                    <a class="nav-link" href="/signup"><b>sign-up</b> </a>
-                </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/login"><b>login</b> </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/logout"><b>Logout</b> </a>
-                </li>
+              <ul class="navbar-nav mr-auto">                  
+                  {{# if login}}
+                    <li class="nav-item">
+                      <a class="nav-link" href="/admin/logout"><b>Logout</b> </a>
+                    </li>
+                  {{else}}
+                    <li class="nav-item">
+                      <a class="nav-link" href="/admin/signup"><b>sign-up</b> </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/admin/login"><b>login</b> </a>
+                    </li>
+                   {{/if}} 
+
               </ul>
           </div>
       </div>
